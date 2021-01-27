@@ -33,9 +33,32 @@ import du fichier csv dans la base de données
 ```bash
 mysql -uroot -Dinsee -e "LOAD DATA LOCAL INFILE 'temp01.csv' INTO TABLE deces CHARACTER SET latin1 FIELDS TERMINATED BY ';' ENCLOSED BY '\"' LINES TERMINATED BY '\r\n' IGNORE 1 ROWS;"
 ```
+
 pour les fichier annuels, on a simplement besoin de supprimer le / en trop dans la colone prénom
+
 ```bash
 cat annee/deces-2011.csv |sed 's/\/"/"/g' > temp2011.csv
 ```
+
+
+calcul de l'age de décés
+```bash
+mysql -uroot -Dinsee -e  "update deces set age=left(datedeces,4)-left(datenaiss,4) ;"
+```
+on obtient une erreur
+```
+ERROR 1292 (22007) at line 1: Truncated incorrect DOUBLE value: 'MARO'
+```
+une erreur s'est glissée dans la ligne 
+```bash
+cat mensuel/Deces_2020_M*.csv|grep "*\""
+"SEDDOURI*MOHAMMED/";"1";"20000710";"99350";"FES*";"MAROC";"20200720";"93039";"31"
+```
+il faut traiter ce point séparément
+```bash
+cat mensuel/Deces_2020_M09.csv |sed 's/*"/"/g'|sed 's/\*/";"/g'|sed 's/\/"/"/g' > temp09.csv
+```
+
+
 
 
