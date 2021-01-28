@@ -59,6 +59,17 @@ il faut traiter ce point séparément
 cat mensuel/Deces_2020_M09.csv |sed 's/*"/"/g'|sed 's/\*/";"/g'|sed 's/\/"/"/g' > temp09.csv
 ```
 
-
-
+après réflexion, commençons par compter le nombre de lignes incohérentes
+```bash
+ mysql -uroot -Dinsee -e  "select *  from deces where datedeces NOT LIKE '20%' AND datedeces NOT LIKE '19%' limit 5;" 
+ +-----------+
+| count(* ) |
++-----------+
+|        13 |
++-----------+
+ ```
+13 lignes incohérentes sur plus de 6 milions, autant les effacer, ça ne changera pas les pourcentages
+```bash
+mysql -uroot -Dinsee -e  "delete  from deces where datedeces NOT LIKE '20%' AND datedeces NOT LIKE '19%' ;" 
+ ```
 
