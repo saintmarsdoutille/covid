@@ -31,7 +31,8 @@ la dernière colone est ajoutée par rapport aux colones des fichiers csv, elle 
 
 import du fichier csv dans la base de données
 ```bash
-mysql -uroot -Dinsee -e "LOAD DATA LOCAL INFILE 'temp01.csv' INTO TABLE deces CHARACTER SET latin1 FIELDS TERMINATED BY ';' ENCLOSED BY '\"' LINES TERMINATED BY '\r\n' IGNORE 1 ROWS;"
+mysql -uroot -Dinsee -e "LOAD DATA LOCAL INFILE 'temp01.csv' INTO TABLE deces \
+CHARACTER SET latin1 FIELDS TERMINATED BY ';' ENCLOSED BY '\"' LINES TERMINATED BY '\r\n' IGNORE 1 ROWS;"
 ```
 
 pour les fichier annuels, on a simplement besoin de supprimer le / en trop dans la colone prénom
