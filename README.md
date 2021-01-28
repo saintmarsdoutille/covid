@@ -73,4 +73,14 @@ après réflexion, commençons par compter le nombre de lignes incohérentes
 ```bash
 mysql -uroot -Dinsee -e  "delete  from deces where datedeces NOT LIKE '20%' AND datedeces NOT LIKE '19%' ;" 
  ```
+## tranches d'age ##
+on pourrait faire une recherche par age
+```bash 
+mysql -uroot -Dinsee -e  "select  count(*) FROM deces WHERE datedeces LIKE '2020%' and age < 20;"
+```
+
+nous allons plutôt classer les deces par tranche d'âge de 10 ans
+```bash
+mysql -uroot -Dinsee -e  "update deces set age=ROUND(left(datedeces,4)-left(datenaiss,4)/10) ;"
+```
 
