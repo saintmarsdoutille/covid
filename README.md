@@ -81,6 +81,30 @@ mysql -uroot -Dinsee -e  "select  count(*) FROM deces WHERE datedeces LIKE '2020
 
 nous allons plutôt classer les deces par tranche d'âge de 10 ans
 ```bash
-mysql -uroot -Dinsee -e  "update deces set age=ROUND(left(datedeces,4)-left(datenaiss,4)/10) ;"
+mysql -uroot -Dinsee -e  "update deces set age=ROUND((left(datedeces,4)-left(datenaiss,4))/10) ;"
 ```
+
+## requetes finales ##
+chaque année, on groupe les décés par tranches d'âge
+```bash
+mysql -uroot -Dinsee -e  "select age,count(*) FROM deces WHERE datedeces LIKE '2015%' group by age;"
++------+----------+
+| age  | count(*) |
++------+----------+
+|    0 |     3687 |
+|    1 |      687 |
+|    2 |     3066 |
+|    3 |     4251 |
+|    4 |    11486 |
+|    5 |    24286 |
+|    6 |    64091 |
+|    7 |    74942 |
+|    8 |   163963 |
+|    9 |   200427 |
+|   10 |    50455 |
+|   11 |      609 |
+|   12 |        2 |
++------+----------+
+```
+
 
