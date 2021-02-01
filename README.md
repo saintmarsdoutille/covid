@@ -5,6 +5,18 @@ Les sources :
 décés mensuels https://www.insee.fr/fr/information/4190491
 décés annuels https://www.insee.fr/fr/information/4769950
 
+```bash
+wget https://www.insee.fr/fr/statistiques/fichier/4769950/deces-2010-2018-csv.zip
+wget https://www.insee.fr/fr/statistiques/fichier/4769950/deces-2000-2009-csv.zip
+wget https://www.insee.fr/fr/statistiques/fichier/4769950/deces-1990-1999-csv.zip
+wget https://www.insee.fr/fr/statistiques/fichier/4769950/deces-1980-1989-csv.zip
+wget https://www.insee.fr/fr/statistiques/fichier/4769950/deces-1970-1979-csv.zip
+
+wget https://www.insee.fr/fr/statistiques/fichier/4190491/Deces_2019.zip
+wget https://www.insee.fr/fr/statistiques/fichier/4190491/Deces_2018.zip
+wget https://www.insee.fr/fr/statistiques/fichier/4190491/Deces_2020.zip
+```
+
 sur les fichiers mensuels et annuels, les entêtes sont différentes 
 ```bash
 head -n1  mensuel/Deces_2020_M12.csv 
