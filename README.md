@@ -74,7 +74,8 @@ cat mensuel/Deces_2020_M09.csv |sed 's/*"/"/g'|sed 's/\*/";"/g'|sed 's/\/"/"/g' 
 
 après réflexion, commençons par compter le nombre de lignes incohérentes
 ```bash
- mysql -uroot -Dinsee -e  "select *  from deces where datedeces NOT LIKE '20%' AND datedeces NOT LIKE '19%' limit 5;" 
+ mysql -uroot -Dinsee -e  ""select count(*) from deces where datedeces NOT LIKE '20%' AND datedeces NOT LIKE '19%' ;" 
+ 
  +-----------+
 | count(* ) |
 +-----------+
